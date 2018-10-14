@@ -1,14 +1,13 @@
 
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@tailwind preflight;
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+@tailwind components;
+
+@tailwind utilities;
+
+.bg-navigation {
+    background-image: radial-gradient(circle at 150px 100%, #151435, #262370);
 }
