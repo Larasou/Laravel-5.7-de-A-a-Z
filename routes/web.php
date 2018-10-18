@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', "PagesController@home");
-Route::get('/contact', "PagesController@contact");
-Route::get('/members', "PagesController@members");
+Route::get('/', 'PagesController@home');
+Route::get('/contact', 'PagesController@contact');
+Route::get('/members', 'PagesController@members');

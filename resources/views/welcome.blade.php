@@ -8,10 +8,8 @@
     <h2>{{ $nameNana }}</h2>
 
     <div class="my-10">
-       <ul>
-           @foreach ($tasks as $task)
-           <li>{{ $task }}</li>
-           @endforeach
-       </ul>
+        <a href="/members">Liste des membres</a>
+
+        <a href="/contact">Contact</a>
     </div>
 @stop
