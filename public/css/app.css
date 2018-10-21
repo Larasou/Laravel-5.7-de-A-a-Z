@@ -6331,6 +6331,19 @@ table {
   background-image: radial-gradient(circle at 150px 100%, #151435, #262370);
 }
 
+.bg-form {
+  background-color: #b8c2cc;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+}
+
+.bg-form:focus {
+  background-color: #dae1e7;
+}
+
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;
