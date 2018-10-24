@@ -22,7 +22,7 @@
  * DELETE /projects/1 (destroy)
  */
 Route::resource('/projects', 'ProjectsController');
-//Route::get('/', 'ProjectsController@index')->name('projects');
+Route::get('/', 'ProjectsController@index')->name('projects');
 //Route::get('/projects', 'ProjectsController@index')->name('projects');
 //Route::get('/projects/create', 'ProjectsController@create')->name('projects.create');
 //Route::post('/projects', 'ProjectsController@store')->name('projects.store');

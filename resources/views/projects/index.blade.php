@@ -16,7 +16,9 @@
             @foreach($projects as $project)
                 <div class="p-3">
                     <h3 class="text-2xl mb-3">
-                        {{ $project->name }}
+                        <a href="{{ route('projects.show', $project) }}" class="no-underline text-indigo-dark">
+                            {{ $project->name }}
+                        </a>
                     </h3>
 
                     <p class="text-lg">
