@@ -31,4 +31,23 @@ class ProjectsController extends Controller
             'project' => $project
         ]);
     }
+
+    public function edit(Project $project) {
+        return view('projects.edit', [
+            'project' => $project
+        ]);
+    }
+
+    public function update(Project $project, Request $request) {
+      $project->update($request->all());
+
+        return redirect()->route('projects.show', $project);
+
+    }
+
+    public function destroy(Project $project) {
+        $project->delete();
+
+        return redirect('/');
+    }
 }
