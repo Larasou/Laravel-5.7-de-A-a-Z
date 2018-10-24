@@ -11,6 +11,23 @@
 |
 */
 
-Route::get('/', 'ProjectsController@index')->name('projects');
-Route::get('/projects/create', 'ProjectsController@create')->name('projects.create');
-Route::post('/projects', 'ProjectsController@store')->name('projects.store');
+
+/**
+ * GET /projects (index)
+ * GET /projects (create)
+ * POST /projects (store)
+ * GET /projects/1 (show)
+ * GET /projects/1 (edit)
+ * PATCH /projects/1 (update)
+ * DELETE /projects/1 (destroy)
+ */
+Route::resource('/projects', 'ProjectsController');
+//Route::get('/', 'ProjectsController@index')->name('projects');
+//Route::get('/projects', 'ProjectsController@index')->name('projects');
+//Route::get('/projects/create', 'ProjectsController@create')->name('projects.create');
+//Route::post('/projects', 'ProjectsController@store')->name('projects.store');
+//Route::get('/projects/{project}', 'ProjectsController@show')->name('projects.show');
+//Route::get('/projects/{project}/edit', 'ProjectsController@edit')->name('projects.edit');
+//Route::patch('/projects/{project}', 'ProjectsController@update')->name('projects.update');
+//Route::delete('/projects/{project}', 'ProjectsController@destroy')->name('projects.destroy');
+//
