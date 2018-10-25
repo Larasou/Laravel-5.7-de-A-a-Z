@@ -19,6 +19,11 @@ class ProjectsController extends Controller
     }
 
     public function store() {
+        request()->validate([
+           'name' => 'required|min:6',
+           'description' => 'required|between:6,500',
+        ]);
+
        $project = Project::create(request()->all());
 
         return redirect()->route('projects.show', $project);
@@ -39,6 +44,11 @@ class ProjectsController extends Controller
     }
 
     public function update(Project $project, Request $request) {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
       $project->update($request->all());
 
         return redirect()->route('projects.show', $project);
