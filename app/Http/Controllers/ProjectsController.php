@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectRequest;
 use App\Project;
 use Illuminate\Http\Request;
 
@@ -18,13 +19,9 @@ class ProjectsController extends Controller
         return view('projects.create');
     }
 
-    public function store() {
-        request()->validate([
-           'name' => 'required|min:6',
-           'description' => 'required|between:6,500',
-        ]);
+    public function store(ProjectRequest $request) {
 
-       $project = Project::create(request()->all());
+       $project = Project::create($request->all());
 
         return redirect()->route('projects.show', $project);
     }
@@ -43,11 +40,7 @@ class ProjectsController extends Controller
         ]);
     }
 
-    public function update(Project $project, Request $request) {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-        ]);
+    public function update(Project $project, ProjectRequest $request) {
 
       $project->update($request->all());
 

@@ -15,12 +15,13 @@
 
                <div class="py-3">
                    <input type="text" name="name"
+                          value="{{ $project->name }}"
                           class="bg-form">
                    {!! $errors->first('name', '<p class="text-red-darker text-lg font-bold">:message</p>') !!}
                </div>
 
                <div class="py-3">
-                   <textarea class="bg-form" name="description" id="description" cols="30" rows="10"></textarea>
+                   <textarea class="bg-form" name="description" id="description" cols="30" rows="10">{{ $project->description }}</textarea>
                    {!! $errors->first('description', '<p class="text-red-darker text-lg font-bold">:message</p>') !!}
                </div>
 
