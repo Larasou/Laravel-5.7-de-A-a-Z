@@ -33,9 +33,9 @@ class ProjectRequest extends FormRequest
     {
         return [
             'name.required' => "Le nom du projet est obligatoire!",
-            'name.min' => "Le nom doit faire au minimum 6 caracteres!",
-            'description.required' => "La desccription du projet est obligatoire!",
-            'description.between' => "La desccription du projet doit faire entre 6 et 500 caracteres",
+            'name.min' => "Le nom du projet doit faire 6 caracteres!",
+            'description.required' => "La description du projet est obligatoire!",
+            'description.between' => "La description du projet doit faire entre 6 et 200 caracteres.",
         ];
     }
 }
