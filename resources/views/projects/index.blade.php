@@ -7,10 +7,12 @@
 @section('content')
     <div class="max-w-3xl mx-auto">
         <div class="my-10">
-            <a href="{{ route('projects.create') }}"
-            class="py-3 px-4 bg-blue-dark no-underline">
-                Ajouter un projet
-            </a>
+            <div class="my-5">
+                <a href="{{ route('projects.create') }}"
+                   class="py-3 px-4 bg-blue-dark no-underline">
+                    Ajouter un projet
+                </a>
+            </div>
 
 
             @foreach($projects as $project)

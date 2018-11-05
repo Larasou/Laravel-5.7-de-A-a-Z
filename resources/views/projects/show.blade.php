@@ -1,12 +1,12 @@
 @extends('layouts.default')
 
 @section('css')
-
+    <link rel="stylesheet" href="    https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
 @stop
 
 @section('content')
     <div class="max-w-3xl mx-auto">
-        <div class="my-10 w-3/5">
+        <div class="my-10 w-4/5">
           <h3 class="text-center text-2xl">
               {{ $project->name }}
           </h3>
@@ -28,9 +28,29 @@
             <div class="mt-5 text-lg">
                 {!! $project->description !!}
 
-                <div class="py-5">
+                <div class="my-5 text-lg">
                     @foreach($project->tasks as $task)
-                        <li class="p-1">{{ $task->description }}</li>
+                        <form action="/tasks/{{ $task->id }}" method="POST">
+                            @method('PATCH')
+                            @csrf
+                            <div class="my-2">
+                                <div class="pretty p-switch p-slim">
+                                    <input
+                                        onchange="this.form.submit()"
+                                        name="completed"
+                                        id="completed"
+                                        {{ $task->completed ? 'checked' : '' }} type="checkbox" />
+                                    <div class="state">
+                                        <label
+                                            class="{{ $task->completed ? 'font-bold text-blue-dark' : '' }}"
+                                            for="completed">
+                                            {{ $task->description }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
                     @endforeach
                 </div>
             </div>
