@@ -32,4 +32,5 @@ Route::patch('/projects/{project}', 'ProjectsController@update')->name('projects
 Route::delete('/projects/{project}', 'ProjectsController@destroy')->name('projects.destroy');
 */
 
+Route::post('/projects/{project}/tasks', 'ProjectTasksController@store')->name('tasks.store');
 Route::patch('/tasks/{task}', 'ProjectTasksController@update');

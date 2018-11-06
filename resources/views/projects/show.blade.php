@@ -28,7 +28,7 @@
             <div class="mt-5 text-lg">
                 {!! $project->description !!}
 
-                <div class="my-5 text-lg">
+                <div class="my-5 text-lg  border-2 rounded-lg p-3">
                     @foreach($project->tasks as $task)
                         <form action="/tasks/{{ $task->id }}" method="POST">
                             @method('PATCH')
@@ -50,8 +50,26 @@
                                 </div>
                             </div>
                         </form>
-
                     @endforeach
+                </div>
+
+                <div>
+                    <form action="{{ route('tasks.store', $project) }}" method="POST">
+                        @csrf
+                        <div>
+                            <input
+                                type="text"
+                                name="description"
+                                class="bg-form"
+                                placeholder="Description de la tâche"
+                            >
+                        </div>
+                        <div class="mt-2">
+                            <button class="py-3 px-6 bg-orange-dark text-white rounded-l">
+                                Ajouter
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
