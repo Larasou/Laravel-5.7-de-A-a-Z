@@ -65,7 +65,7 @@
                             >
                         </div>
                         <div class="mt-2">
-                            <button class="py-3 px-6 bg-orange-dark text-white rounded-l">
+                            <button class="py-3 px-6 w-1/4 bg-orange-dark text-white rounded-l">
                                 Ajouter
                             </button>
                         </div>
