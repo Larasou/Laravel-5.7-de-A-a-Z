@@ -5,21 +5,21 @@
 @stop
 
 @section('content')
-    <div class="max-w-3xl mx-auto">
+    <div class="container mx-auto">
         <div class="my-10">
             <div class="my-5">
                 <a href="{{ route('projects.create') }}"
-                   class="py-3 px-4 bg-blue-dark no-underline">
+                   class="py-3 px-4 text-white bg-blue-dark no-underline">
                     Ajouter un projet
                 </a>
             </div>
 
 
             @foreach($projects as $project)
-                <div class="p-3">
+                <div class="py-5">
                     <h3 class="text-2xl mb-3">
                         <a href="{{ route('projects.show', $project) }}" class="no-underline text-indigo-dark">
-                            {{ $project->name }}
+                            {{ $project->name  }}
                         </a>
                     </h3>
 
