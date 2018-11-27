@@ -21,4 +21,9 @@ class Project extends Model
         return Carbon::parse($date);
     }
 
+    public function setPublishedAtAttribute($date)
+    {
+        $this->attributes['published_at'] = Carbon::parse($date);
+    }
+
 }

@@ -5,8 +5,8 @@
 @stop
 
 @section('content')
-    <div class="max-w-3xl mx-auto">
-        <div class="my-10 w-4/5">
+    <div class="container mx-auto">
+        <div class="my-10">
           <h3 class="text-center text-2xl">
               {{ $project->name }}
           </h3>
@@ -27,6 +27,10 @@
 
             <div class="mt-5 text-lg">
                 {!! $project->description !!}
+
+                <div class="my-5 font-semibold text-grey-darker">
+                    {{  ucwords($project->published_at->formatLocalized('%a %d %b %G')) }}
+                </div>
 
                 <div class="my-5 text-lg  border-2 rounded-lg p-3">
                     @foreach($project->tasks as $task)
