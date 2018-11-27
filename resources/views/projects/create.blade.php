@@ -9,9 +9,7 @@
         @include('layouts.errors')
 
        <div class="my-10">
-           @include('projects.form', [
-                'method' => $project->id ? method_field('PUT') : ''
-           ])
+           @include('projects.form')
        </div>
     </div>
 @stop
