@@ -48,7 +48,13 @@ class ProjectsController extends Controller
     {
         $project->update($request->all());
 
-        return redirect()->route('projects.show', $project);
+        return redirect()
+            ->route('projects.show', $project)
+            ->with([
+                'color' => 'orange',
+               // 'title' => "Projet mise à jour!",
+                'message' => "Le projet {$project->name} a bien été mise à jour!",
+            ]);
 
     }
 

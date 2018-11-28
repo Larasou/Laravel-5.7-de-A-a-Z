@@ -34,6 +34,11 @@
 </nav>
 
 <div>
+
+    @component('layouts.flash')
+        {!! session('message') !!}
+    @endcomponent
+
     @yield('content')
 </div>
 <!-- Les restes du site... -->

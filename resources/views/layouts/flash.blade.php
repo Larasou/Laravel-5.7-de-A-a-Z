@@ -1,11 +1,14 @@
-@if ($errors->any())
-    <div class="my-3 w-4/5">
-        <div class="bg-indigo-darkest text-center py-4 lg:px-4">
-            @foreach($errors->all() as $error)
-                <li class="p-2 text-white font-bold">
-                    {!! $error !!}
-                </li>
-            @endforeach
+@if (session('message'))
+    <div class="container mx-auto">
+        <div class="my-3">
+            <div class="bg-{{ session('color') ? session('color') : 'blue' }} text-white py-4 lg:px-4">
+                @if (session('title'))
+                    {!! session('title') !!}
+                @endif
+                <p>
+                   {!! $slot !!}
+                </p>
+            </div>
         </div>
     </div>
 @endif
