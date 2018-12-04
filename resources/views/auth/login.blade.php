@@ -31,6 +31,10 @@
                          </button>
                        </div>
                     </form>
+
+                    @component('layouts.flash')
+                        {!! session('message') !!}
+                    @endcomponent
                 </div>
             </div>
         </div>

@@ -19,15 +19,25 @@
             </a>
         </div>
         <div class="text-lg">
-            <a href="/news" class="no-underline text-white hover:text-grey">
-                Actualités
-            </a>
             <a href="/blog" class="ml-2 no-underline text-white hover:text-grey">
                 Blog
             </a>
-            <a href="/contact" class="ml-2 no-underline text-white hover:text-grey">
-                Contact
-            </a>
+
+            @auth
+                <a href="/home" class="ml-2 no-underline text-white hover:text-grey">
+                    Mon compte
+                </a>
+                <a href="/logout" class="ml-2 no-underline text-white hover:text-grey">
+                   Se déconnecter
+                </a>
+            @else
+                <a href="{{ route('login') }}" class="ml-2 no-underline text-white hover:text-grey">
+                   Se connecter
+                </a>
+                <a href="/register" class="ml-2 no-underline text-white hover:text-grey">
+                    S'enregistrer
+                </a>
+            @endauth
         </div>
     </div>
 </nav>

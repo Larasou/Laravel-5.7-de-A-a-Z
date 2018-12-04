@@ -11,10 +11,6 @@
 
 <div>
    <div class="bg-auth h-screen">
-       @component('layouts.flash')
-           {!! session('message') !!}
-       @endcomponent
-
        @yield('content')
    </div>
 </div>
