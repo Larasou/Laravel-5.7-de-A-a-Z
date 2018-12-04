@@ -6344,39 +6344,6 @@ table {
   background-color: #dae1e7;
 }
 
-.bg-auth {
-  background-image: radial-gradient(ellipse at center, #ff6c41, #c42a0a);
-}
-
-.bg-auth .center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-.bg-auth .form-auth {
-  width: 100%;
-  padding-top: .75rem;
-  padding-bottom: .75rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  border-radius: 9999px;
-  background-color: #dae1e7;
-  outline: 0;
-}
-
-.bg-auth .form-auth:focus {
-  background-color: #f8fafc;
-}
-
-.bg-auth .form-auth.is-error {
-  background-color: #fcebea;
-  border-width: 1px;
-  border-color: #e3342f;
-}
-
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;

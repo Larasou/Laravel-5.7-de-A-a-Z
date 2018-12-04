@@ -9,3 +9,30 @@
     }
 
 }
+
+.bg-auth {
+    background-image: radial-gradient(ellipse at center, #ff6c41, #c42a0a);
+
+    .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .form-auth {
+        @apply w-full py-3 px-6 rounded-full bg-grey-light outline-none;
+
+        &:focus{
+            @apply bg-grey-lightest;
+        }
+
+        &.is-error{
+            @apply bg-red-lightest border border-red;
+        }
+    }
+}
