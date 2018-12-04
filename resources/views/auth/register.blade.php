@@ -1,77 +1,72 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+    <div class="container mx-auto">
+        <div class="">
+            <div class="center bg-white max-w-md w-full p-8 rounded-lg">
+                <h3 class="text-center text-3xl">
+                   S'enregistrer
+                </h3>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                <div class="p-4 my-10">
+                    <form action="/register" method="post">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="flex flex-col my-5">
+                            <input type="text" name="name"
+                                   value="{{ old('name') }}"
+                                   placeholder="Nom d'utilisateur"
+                                   class="form-auth {{ $errors->first('email', 'is-error') }}">
+                            {!! $errors->first('name', '<p class="mt-1 lg:ml-3 text-red font-bold text-xs lg:text-sm">:message</p>') !!}
                         </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="flex flex-col my-5">
+                            <input type="text" name="email"
+                                   value="{{ old('email') }}"
+                                   placeholder="Adresse email"
+                                   class="form-auth {{ $errors->first('email', 'is-error') }}">
+                            {!! $errors->first('email', '<p class="mt-1 lg:ml-3 text-red font-bold text-xs lg:text-sm">:message</p>') !!}
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="flex flex-col my-5">
+                            <input type="password" name="password"
+                                   placeholder="Mot de passe"
+                                   class="form-auth {{ $errors->first('password', 'is-error') }}">
+                            {!! $errors->first('password', '<p class="mt-1 lg:ml-3 text-red font-bold text-xs lg:text-sm">:message</p>') !!}
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
+                        <div class="flex flex-col my-5">
+                            <input type="password" name="password_confirmation"
+                                   placeholder="Re: Mot de passe"
+                                   class="form-auth {{ $errors->first('password', 'is-error') }}">
+                            {!! $errors->first('password', '<p class="mt-1 lg:ml-3 text-red font-bold text-xs lg:text-sm">:message</p>') !!}
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
+                        <div class="flex flex-col my-5">
+                            <button class="py-4 px-6 w-full bg-red-dark text-white font-bold text-lg rounded-full">
+                                Créer mon compte!
+                            </button>
                         </div>
                     </form>
+
+                    @component('layouts.flash')
+                        {!! session('message') !!}
+                    @endcomponent
+                </div>
+
+                <div class="flex justify-between">
+                    <a href="{{ route('login') }}"
+                       class="font-bold no-underline text-lg text-red">
+                        Se connecter
+                    </a>
+
+                    <a href=""
+                       class="font-bold no-underline text-lg text-red">
+                        Mot de passe perdu?
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

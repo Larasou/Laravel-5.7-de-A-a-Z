@@ -15,12 +15,14 @@
                         <div class="flex flex-col my-5">
                            <input type="text" name="email"
                                   value="{{ old('email') }}"
+                                  placeholder="Adresse email"
                                   class="form-auth {{ $errors->first('email', 'is-error') }}">
                             {!! $errors->first('email', '<p class="mt-1 lg:ml-3 text-red font-bold text-xs lg:text-sm">:message</p>') !!}
                        </div>
 
                         <div class="flex flex-col my-5">
                            <input type="password" name="password"
+                                  placeholder="Mot de passe"
                                   class="form-auth {{ $errors->first('password', 'is-error') }}">
                            {!! $errors->first('password', '<p class="mt-1 lg:ml-3 text-red font-bold text-xs lg:text-sm">:message</p>') !!}
                        </div>
@@ -35,6 +37,18 @@
                     @component('layouts.flash')
                         {!! session('message') !!}
                     @endcomponent
+                </div>
+
+                <div class="flex justify-between">
+                    <a href="{{ route('register') }}"
+                    class="font-bold no-underline text-lg text-red">
+                        S'enregistrer
+                    </a>
+
+                    <a href=""
+                    class="font-bold no-underline text-lg text-red">
+                       Mot de passe perdu?
+                    </a>
                 </div>
             </div>
         </div>
