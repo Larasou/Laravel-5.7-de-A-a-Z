@@ -12,36 +12,30 @@
                     <form action="/register" method="post">
                         @csrf
 
-                        <div class="flex flex-col my-5">
-                            <input type="text" name="name"
-                                   value="{{ old('name') }}"
-                                   placeholder="Nom d'utilisateur"
-                                   class="form-auth {{ $errors->first('email', 'is-error') }}">
-                            {!! $errors->first('name', '<p class="mt-1 lg:ml-3 text-red font-bold text-xs lg:text-sm">:message</p>') !!}
-                        </div>
+                        @include('auth.fields', [
+                            'name' => "name",
+                            'placeholder' => "Nom d'utilisateur",
+                            'type' => "text",
+                        ])
 
 
-                        <div class="flex flex-col my-5">
-                            <input type="text" name="email"
-                                   value="{{ old('email') }}"
-                                   placeholder="Adresse email"
-                                   class="form-auth {{ $errors->first('email', 'is-error') }}">
-                            {!! $errors->first('email', '<p class="mt-1 lg:ml-3 text-red font-bold text-xs lg:text-sm">:message</p>') !!}
-                        </div>
+                          @include('auth.fields', [
+                            'name' => "email",
+                            'placeholder' => "Adresse email",
+                            'type' => "email",
+                        ])
 
-                        <div class="flex flex-col my-5">
-                            <input type="password" name="password"
-                                   placeholder="Mot de passe"
-                                   class="form-auth {{ $errors->first('password', 'is-error') }}">
-                            {!! $errors->first('password', '<p class="mt-1 lg:ml-3 text-red font-bold text-xs lg:text-sm">:message</p>') !!}
-                        </div>
+                        @include('auth.fields', [
+                            'name' => "password",
+                            'placeholder' => "Mot de passe",
+                            'type' => "password",
+                        ])
 
-                        <div class="flex flex-col my-5">
-                            <input type="password" name="password_confirmation"
-                                   placeholder="Re: Mot de passe"
-                                   class="form-auth {{ $errors->first('password', 'is-error') }}">
-                            {!! $errors->first('password', '<p class="mt-1 lg:ml-3 text-red font-bold text-xs lg:text-sm">:message</p>') !!}
-                        </div>
+                        @include('auth.fields', [
+                            'name' => "password_confirmation",
+                            'placeholder' => "RE: Mot de passe",
+                            'type' => "password",
+                        ])
 
                         <div class="flex flex-col my-5">
                             <button class="py-4 px-6 w-full bg-red-dark text-white font-bold text-lg rounded-full">

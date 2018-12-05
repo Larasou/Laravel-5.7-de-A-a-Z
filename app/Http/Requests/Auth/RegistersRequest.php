@@ -29,4 +29,17 @@ class RegistersRequest extends FormRequest
             'password' => 'required|min:6|confirmed',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => "Quel est ton nom d'utilisateur?",
+            'name.alpha_dash' => "Ce n'est pas une chaine de alphanumérique valide",
+            'email.required' => "Il me faut une adresse email!",
+            'email.email' => "Ceci n'est pas une adresse email valide!",
+            'password.required' => "Il me faut un mot de passe!",
+            'password.confirmed' => "Les mots de passe ne correspodent pas!",
+            'password.min' => "Le mot de passe doit faire au moins 6 caracteres",
+        ];
+    }
 }

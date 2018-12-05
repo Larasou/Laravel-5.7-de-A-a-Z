@@ -12,20 +12,18 @@
                     <form action="/login" method="post">
                         @csrf
 
-                        <div class="flex flex-col my-5">
-                           <input type="text" name="email"
-                                  value="{{ old('email') }}"
-                                  placeholder="Adresse email"
-                                  class="form-auth {{ $errors->first('email', 'is-error') }}">
-                            {!! $errors->first('email', '<p class="mt-1 lg:ml-3 text-red font-bold text-xs lg:text-sm">:message</p>') !!}
-                       </div>
 
-                        <div class="flex flex-col my-5">
-                           <input type="password" name="password"
-                                  placeholder="Mot de passe"
-                                  class="form-auth {{ $errors->first('password', 'is-error') }}">
-                           {!! $errors->first('password', '<p class="mt-1 lg:ml-3 text-red font-bold text-xs lg:text-sm">:message</p>') !!}
-                       </div>
+                        @include('auth.fields', [
+                            'name' => "name",
+                            'placeholder' => "Nom d'utilisateur",
+                            'type' => "text",
+                        ])
+
+                        @include('auth.fields', [
+                            'name' => "password",
+                            'placeholder' => "Mot de passe",
+                            'type' => "password",
+                        ])
 
                         <div class="flex flex-col my-5">
                          <button class="py-4 px-6 w-full bg-red-dark text-white font-bold text-lg rounded-full">
