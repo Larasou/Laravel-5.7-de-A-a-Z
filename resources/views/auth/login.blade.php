@@ -1,5 +1,9 @@
 @extends('layouts.auth')
 
+@section('css')
+    <link rel="stylesheet" href="    https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
+@stop
+
 @section('content')
     <div class="container mx-auto">
         <div class="">
@@ -23,6 +27,11 @@
                             'placeholder' => "Mot de passe",
                             'type' => "password",
                         ])
+
+                        <div class="my-5">
+                            <input type="checkbox" name="remember" id="remember">
+                            <label for="remember">Se souvenir de moi?</label>
+                        </div>
 
                         <div class="flex flex-col my-5">
                          <button class="py-4 px-6 w-full bg-red-dark text-white font-bold text-lg rounded-full">

@@ -22,7 +22,7 @@ class LoginsController extends Controller
 
         if ($user) {
             if (\Hash::check($request->password, $user->password)) {
-                auth()->login($user);
+                auth()->login($user, $request->has('remember'));
 
                 return redirect('/');
             }
