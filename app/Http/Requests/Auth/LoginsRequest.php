@@ -24,7 +24,7 @@ class LoginsRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
+            'name' => 'required',
             'password' => 'required|min:6',
         ];
     }
@@ -32,8 +32,8 @@ class LoginsRequest extends FormRequest
     public function messages()
     {
         return [
-            'email.required' => "Il me faut une adresse email!",
-            'email.email' => "Ceci n'est pas une adresse email valide!",
+            'email.required' => "Il me faut ton identifiant!",
+           // 'email.email' => "Ceci n'est pas une adresse email valide!",
             'password.required' => "Il me faut un mot de passe!",
             'password.min' => "Le mot de passe doit faire au moins 6 caracteres",
         ];

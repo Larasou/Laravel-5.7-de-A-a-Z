@@ -12,10 +12,9 @@
                     <form action="/login" method="post">
                         @csrf
 
-
                         @include('auth.fields', [
                             'name' => "name",
-                            'placeholder' => "Nom d'utilisateur",
+                            'placeholder' => "Identifiant",
                             'type' => "text",
                         ])
 

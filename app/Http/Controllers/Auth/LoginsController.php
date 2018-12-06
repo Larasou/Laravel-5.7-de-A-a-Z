@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Requests\Auth\LoginsRequest;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,14 +16,32 @@ class LoginsController extends Controller
 
     public function store(LoginsRequest $request) 
     {
-        if (auth()->attempt(['email' => $request->email, 'password' => $request->password]))
-            return redirect('/');
+        $user = User::where('name', $request->name)
+            ->orWhere('email', $request->name)
+            ->first();
 
+        if ($user) {
+            if (\Hash::check($request->password, $user->password)) {
+                auth()->login($user);
+
+                return redirect('/');
+            }
+
+            return $this->messageError($request);
+        }
+
+        return $this->messageError($request);
+
+    }
+
+    public function messageError($request)
+    {
         return back()->with([
             'color' => 'red',
             'message' => "Identifiant incorrect!"
+        ])->withInput([
+            'name' => $request->name,
         ]);
-
     }
 
     public function destroy()
