@@ -19,6 +19,8 @@ Route::group(['namespace' => 'Auth'], function () {
 
     Route::get('register', 'RegistersController@create')->name('register');
     Route::post('register', 'RegistersController@store');
+
+    Route::get('confirmation/{user}/{token}', 'ConfirmationsController@store')->name('confirmation');
 });
 
 
