@@ -21,6 +21,12 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::post('register', 'RegistersController@store');
 
     Route::get('confirmation/{user}/{token}', 'ConfirmationsController@store')->name('confirmation');
+
+    Route::get('forget', 'ForgetController@create')->name('forget');
+    Route::post('forget', 'ForgetController@store');
+
+    Route::get('reset/{user}/{token}', 'ResetController@create')->name('reset');
+    Route::post('reset/{user}/{token}', 'ResetController@store');
 });
 
 

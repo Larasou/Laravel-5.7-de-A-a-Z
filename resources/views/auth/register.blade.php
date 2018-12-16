@@ -55,7 +55,7 @@
                         Se connecter
                     </a>
 
-                    <a href=""
+                    <a href="{{ route('forget') }}"
                        class="font-bold no-underline text-lg text-red">
                         Mot de passe perdu?
                     </a>

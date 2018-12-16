@@ -1,65 +1,54 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+    <div class="container mx-auto">
+        <div class="">
+            <div class="center bg-white max-w-md w-full p-8 rounded-lg">
+                <h3 class="text-center text-3xl">
+                   Réinitiliser mon mot de passe
+                </h3>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
+                <div class="p-4 my-10">
+                    <form action="" method="post">
                         @csrf
 
-                        <input type="hidden" name="token" value="{{ $token }}">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                        @include('auth.fields', [
+                            'name' => "password",
+                            'placeholder' => "Nouveau mot de passe",
+                            'type' => "password",
+                        ])
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email ?? old('email') }}" required autofocus>
+                        @include('auth.fields', [
+                            'name' => "password_confirmation",
+                            'placeholder' => "RE: Mot de passe",
+                            'type' => "password",
+                        ])
 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Reset Password') }}
-                                </button>
-                            </div>
+                        <div class="flex flex-col my-5">
+                            <button class="py-4 px-6 w-full bg-red-dark text-white font-bold text-lg rounded-full">
+                                Mettre à jour!
+                            </button>
                         </div>
                     </form>
+
+                    @component('layouts.flash')
+                        {!! session('message') !!}
+                    @endcomponent
+                </div>
+
+                <div class="flex justify-between">
+                    <a href="{{ route('login') }}"
+                       class="font-bold no-underline text-lg text-red">
+                        Se connecter
+                    </a>
+
+                    <a href="{{ route('login') }}"
+                       class="font-bold no-underline text-lg text-red">
+                      Se connecter
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

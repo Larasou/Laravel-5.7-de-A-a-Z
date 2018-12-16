@@ -9,11 +9,11 @@
         <div class="">
             <div class="center bg-white max-w-md w-full p-8 rounded-lg">
                 <h3 class="text-center text-3xl">
-                    Se connecter
+                  Mot de passe perdu
                 </h3>
 
                 <div class="p-4 my-10">
-                    <form action="/login" method="post">
+                    <form action="" method="post">
                         @csrf
 
                         @include('auth.fields', [
@@ -22,20 +22,9 @@
                             'type' => "text",
                         ])
 
-                        @include('auth.fields', [
-                            'name' => "password",
-                            'placeholder' => "Mot de passe",
-                            'type' => "password",
-                        ])
-
-                        <div class="my-5">
-                            <input type="checkbox" name="remember" id="remember">
-                            <label for="remember">Se souvenir de moi?</label>
-                        </div>
-
                         <div class="flex flex-col my-5">
                          <button class="py-4 px-6 w-full bg-red-dark text-white font-bold text-lg rounded-full">
-                             Se connecter
+                            Envoyer!
                          </button>
                        </div>
                     </form>
@@ -51,9 +40,9 @@
                         S'enregistrer
                     </a>
 
-                    <a href="{{ route('forget') }}"
+                    <a href="{{ route('login') }}"
                     class="font-bold no-underline text-lg text-red">
-                       Mot de passe perdu?
+                      Se connecter
                     </a>
                 </div>
             </div>
