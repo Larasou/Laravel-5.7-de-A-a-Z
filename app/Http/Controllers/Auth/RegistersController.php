@@ -18,14 +18,10 @@ class RegistersController extends Controller
 
     public function store(RegistersRequest $request)
     {
-        $request['token'] = str_random(60);
-
-        $user = User::create($request->all());
-
-        Mail::to($user)->send(new RegisterMail($user));
+       $user = $request->persist($request);
 
         return redirect('/')->with([
-            'meta-title' => "Compte créer avec succès!",
+            'meta-title' => "{$user->name}, Compte créer avec succès!",
             'message' => "Il faut maintenant valider ton compte par email!"
         ]);
     }

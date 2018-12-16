@@ -11,7 +11,7 @@ class RegisterMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    private $user;
 
     /**
      * Create a new message instance.
@@ -31,7 +31,7 @@ class RegisterMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.register')
+        return $this->markdown('emails.register', ['user' => $this->user])
             ->subject('Valider mon compte!')
             ->from('contact@larasou.com', 'Larasou');
     }

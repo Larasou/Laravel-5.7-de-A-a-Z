@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Mail\RegisterMail;
+use App\User;
 use Illuminate\Foundation\Http\FormRequest;
+use PhpParser\Node\Expr\Array_;
 
 class RegistersRequest extends FormRequest
 {
@@ -41,5 +44,16 @@ class RegistersRequest extends FormRequest
             'password.confirmed' => "Les mots de passe ne correspodent pas!",
             'password.min' => "Le mot de passe doit faire au moins 6 caracteres",
         ];
+    }
+
+    public function persist($request)
+    {
+        $request['token'] = str_random(60);
+
+        $user = User::create($request->all());
+
+        \Mail::to($user)->send(new RegisterMail($user));
+
+        return $user;
     }
 }
