@@ -3,8 +3,10 @@
 namespace App\Http\Requests\Auth;
 
 use App\Mail\RegisterMail;
+use App\Notifications\SendUserMailAfterRegister;
 use App\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Notification;
 use PhpParser\Node\Expr\Array_;
 
 class RegistersRequest extends FormRequest
@@ -52,7 +54,9 @@ class RegistersRequest extends FormRequest
 
         $user = User::create($request->all());
 
-        \Mail::to($user)->send(new RegisterMail($user));
+        // \Mail::to($user)->send(new RegisterMail($user));
+
+        $user->notify(new SendUserMailAfterRegister());
 
         return $user;
     }
