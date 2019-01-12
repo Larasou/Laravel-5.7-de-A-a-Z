@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['confirmed'])->except(['index', 'show']);
+    }
+
     public function index()
     {
 

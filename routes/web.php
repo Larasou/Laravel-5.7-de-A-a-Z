@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/', 'ProjectsController@index')->name('projects');
 
 Route::group(['namespace' => 'Auth'], function () {
     Route::get('login', 'LoginsController@create')->name('login');
@@ -30,8 +31,16 @@ Route::group(['namespace' => 'Auth'], function () {
 });
 
 
-Route::resource('/projects', 'ProjectsController');
-Route::get('/', 'ProjectsController@index')->name('projects');
+Route::group(['prefix' => 'projects'], function () {
+    Route::get('', 'ProjectsController@index')->name('projects.index');
+    Route::get('create', 'ProjectsController@create')->name('projects.create');
+    Route::post('', 'ProjectsController@store')->name('projects.store');
+    Route::get('{project}', 'ProjectsController@show')->name('projects.show');
+    Route::get('{project}/edit', 'ProjectsController@edit')->name('projects.edit');
+    Route::put('{project}', 'ProjectsController@update')->name('projects.update');
+    Route::delete('{project}', 'ProjectsController@destroy')->name('projects.destroy');
+
+});
 
 
 Route::post('/projects/{project}/tasks', 'ProjectTasksController@store')->name('tasks.store');
