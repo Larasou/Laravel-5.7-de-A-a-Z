@@ -11,12 +11,20 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $projects = factory('App\Project', 15)->create();
+        $users = factory('App\User', 5)->create();
 
-        $projects->each(function ($project) {
-            factory('App\Task', 5)->create([
-                'project_id' => $project->id,
-            ]);
+        $users->each(function ($user) {
+
+            $projects = $user->projects()->createMany(
+                factory('App\Project', 5)->raw(),
+            );
+
+
+            $projects->each(function ($project) {
+                factory('App\Task', 5)->create([
+                    'project_id' => $project->id,
+                ]);
+            });
         });
     }
 }

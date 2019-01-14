@@ -28,7 +28,8 @@
             <div class="mt-5 text-lg">
                 {!! $project->description !!}
 
-                <div class="my-5 font-semibold text-grey-darker">
+                <div class="my-10 text-sm font-light text-grey-darker">
+                    Par {{ $project->user->name }}, le
                     {{  ucwords($project->published_at->formatLocalized('%a %d %b %G')) }}
                 </div>
 

@@ -26,4 +26,9 @@ class Project extends Model
         $this->attributes['published_at'] = Carbon::parse($date);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
