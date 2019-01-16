@@ -11,20 +11,22 @@
               {{ $project->name }}
           </h3>
 
-            <div class="my-3 flex justify-end">
-                <a href="{{ route('projects.edit', $project) }}" class="p-3 text-green-darker no-underline font-bold">
-                    Editer
-                </a>
+           @can('update', $project)
+                <div class="my-3 flex justify-end">
+                    <a href="{{ route('projects.edit', $project) }}" class="p-3 text-green-darker no-underline font-bold">
+                        Editer
+                    </a>
 
-                <form action="{{ route('projects.destroy', $project) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button class="p-3 text-red-darker no-underline font-bold">
-                        Supprimer
-                    </button>
-                </form>
-            </div>
+                    <form action="{{ route('projects.destroy', $project) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="p-3 text-red-darker no-underline font-bold">
+                            Supprimer
+                        </button>
+                    </form>
+                </div>
 
+            @endcan
             <div class="mt-5 text-lg">
                 {!! $project->description !!}
 

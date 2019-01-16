@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
         $users->each(function ($user) {
 
             $projects = $user->projects()->createMany(
-                factory('App\Project', 5)->raw(),
+                factory('App\Project', 5)->raw()
             );
 
 

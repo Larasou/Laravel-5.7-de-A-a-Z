@@ -44,6 +44,8 @@ class ProjectsController extends Controller
 
     public function edit(Project $project)
     {
+        $this->authorize('update', $project);
+
         return view('projects.edit', [
             'project' => $project
         ]);
@@ -51,12 +53,14 @@ class ProjectsController extends Controller
 
     public function update(Project $project, ProjectRequest $request)
     {
+        $this->authorize('update', $project);
+
         $project->update($request->all());
 
         return redirect()
             ->route('projects.show', $project)
             ->with([
-                'color' => 'orange',
+                'color' => 'green-dark',
                // 'title' => "Projet mise à jour!",
                 'message' => "Le projet {$project->name} a bien été mise à jour!",
             ]);
@@ -65,6 +69,8 @@ class ProjectsController extends Controller
 
     public function destroy(Project $project)
     {
+        $this->authorize('update', $project);
+
         $project->delete();
 
         return redirect('/');

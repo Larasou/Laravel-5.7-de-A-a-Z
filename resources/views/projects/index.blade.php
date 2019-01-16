@@ -7,12 +7,14 @@
 @section('content')
     <div class="container mx-auto">
         <div class="my-10">
-            <div class="my-5">
-                <a href="{{ route('projects.create') }}"
-                   class="py-3 px-4 text-white bg-blue-dark no-underline">
-                    Ajouter un projet
-                </a>
-            </div>
+            @auth
+                <div class="my-5">
+                    <a href="{{ route('projects.create') }}"
+                       class="py-3 px-4 text-white bg-blue-dark no-underline">
+                        Ajouter un projet
+                    </a>
+                </div>
+            @endauth
 
 
             @foreach($projects as $project)
