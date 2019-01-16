@@ -20,6 +20,8 @@ class CreateProjectsTable extends Migration
             $table->timestamp('published_at')->useCurrent();
             $table->text('description');
             $table->timestamps();
+
+            //$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

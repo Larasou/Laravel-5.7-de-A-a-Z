@@ -11,6 +11,27 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        if (app()->environment() === 'local') {
+            self::created(function ($model) {
+                static::first()->update([
+                    'name' => 'Soulouf',
+                    'email' => 'contact@larasou.com',
+                ]);
+            });;
+
+        }
+
+
+      self::deleting(function ($model) {
+          $model->projects->each->delete();
+      });
+
+    }
+
     /**
      * The attributes that are mass assignable.
      *

@@ -9,6 +9,15 @@ class Project extends Model
 {
     protected $fillable = ['name', 'description', 'published_at'];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        self::deleting(function ($model) {
+            $model->tasks->each->delete();
+        });
+    }
+
     protected $dates = ['created_at', 'updated_at', 'published_at'];
 
     public function tasks()
