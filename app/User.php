@@ -15,7 +15,7 @@ class User extends Authenticatable
     {
         parent::boot();
 
-        if (app()->environment() === 'local') {
+        if (app()->isLocal()) {
             self::created(function ($model) {
                 static::first()->update([
                     'name' => 'Soulouf',

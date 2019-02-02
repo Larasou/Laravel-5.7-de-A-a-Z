@@ -7,11 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $fillable = ['name', 'description', 'published_at'];
+    protected $fillable = ['name', 'slug', 'description', 'published_at'];
 
     protected static function boot()
     {
         parent::boot();
+
+        self::created(function ($model) {
+            $model->update(['slug' => "p{$model->id}-" . str_slug($model->name)]);
+        });
 
         self::deleting(function ($model) {
             $model->tasks->each->delete();
@@ -38,6 +42,11 @@ class Project extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
 }
